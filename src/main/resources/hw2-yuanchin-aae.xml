@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>false</primitive>  
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="TestElementAnnotator">
+      <import name="descriptors.TestElementAnnotator"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="TokenAnnotator">
+      <import name="descriptors.TokenAnnotator"/>
+    </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="TokenUniGramAnnotator">
+      <import name="descriptors.TokenUniGramAnnotator"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="TokenBiGramAnnotator">
+      <import name="descriptors.TokenBiGramAnnotator"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="TokenTriGramAnnotator">
+      <import name="descriptors.TokenTriGramAnnotator"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="AnswerScoreAnnotator">
+      <import name="descriptors.AnswerScoreAnnotator"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="Evaluator">
+      <import name="descriptors.Evaluator"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
+    <name>hw2-yuanchin-aae</name>
+    <description>Using this aggregate analysis engine descriptor to combine each primitive analysis engine descriptor in a fixed execution flow. Output Question, Answer, Token, NGram and AnswerScore annotation. And output the summary of results to the console.</description>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters/>
+    <configurationParameterSettings/>
+    <flowConstraints>
+      <fixedFlow>
+        <node>TestElementAnnotator</node>
+        <node>TokenAnnotator</node>
+      <node>TokenUniGramAnnotator</node>
+        <node>TokenBiGramAnnotator</node>
+        <node>TokenTriGramAnnotator</node>
+        <node>AnswerScoreAnnotator</node>
+        <node>Evaluator</node>
+      </fixedFlow>
+    </flowConstraints>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Token</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Question</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Answer</type>
+        <type allAnnotatorFeatures="true">edu.cmu.deiis.types.NGram</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.AnswerScore</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+  <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>
